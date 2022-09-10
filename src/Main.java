@@ -10,12 +10,7 @@ import java.util.Queue;
 public class Main {
 
     public static void main(String[] args) {
-        Queue<Person> personQueue = new ArrayDeque<>();
-        personQueue.offer(generateClients().get(0));
-        personQueue.offer(generateClients().get(1));
-        personQueue.offer(generateClients().get(2));
-        personQueue.offer(generateClients().get(3));
-        personQueue.offer(generateClients().get(4));
+        Queue<Person> personQueue = new ArrayDeque<>(generateClients());
 
         printQueue(personQueue);
     }
