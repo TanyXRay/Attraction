@@ -41,19 +41,20 @@ public class Main {
      * @param personQueue очередь из людей.
      */
     public static void printQueue(Queue<Person> personQueue) {
+        int countOfTickets;
         while (!personQueue.isEmpty()) {
-            int countOfTickets;
-            for (Person p : personQueue) {
-                countOfTickets = p.getNumberOfTickets() - 1;
-                if (!(countOfTickets == 0)) {
-                    System.out.println(p + " прокатил(ась)ся на аттракционе!");
-                    p.setNumberOfTickets(countOfTickets);
-                } else {
-                    System.out.println("У " + p.getName() + " " + p.getSurname() + " закончились билеты!(выбывает из очереди)");
-                    personQueue.remove(p);
-                }
+            Person p = personQueue.poll();
+            countOfTickets = p.getNumberOfTickets() - 1;
+            if (countOfTickets != 0) {
+                System.out.println(p + " прокатил(ась)ся на аттракционе!");
+                personQueue.offer(p);
+                p.setNumberOfTickets(countOfTickets);
+            } else {
+                System.out.println("У " + p.getName() + " " + p.getSurname() + " закончились билеты!(выбывает из очереди)");
+                personQueue.remove(p);
             }
         }
     }
 }
+
 
